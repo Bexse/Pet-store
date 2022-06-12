@@ -182,21 +182,20 @@ export class AddComponent implements OnInit {
     this.getLocation();
   }
   selectImage(event: any) {
-    const file = event.target.files[0]; // get the file from folder and save it.
+    const file = event.target.files[0]; 
 
     if (event.target.files.length > 0) {
       this.addForm.patchValue({
         image: file,
       });
     }
-    this.addForm.get('image')?.updateValueAndValidity(); // if user changes their mind=> this will change accoringly.
-    const reader = new FileReader(); // this obj let web api to read the content of file async (raw data buffer) stored in my computer.
+    this.addForm.get('image')?.updateValueAndValidity(); 
+    const reader = new FileReader(); 
     reader.onload = () => {
-      this.preview = reader.result as string; // onload function executes after this and the result is stored on the imagePreview variable which has the path of the image so it can be displayed on the form.
+      this.preview = reader.result as string; 
     };
-    // reader.readAsDataURL(file); // read will read the blob or file forms.
 
-    //To show image preview in Angular, we declared the uploadFile method and using the FileReader method to create the reader instance. The reader instance will use the readAsDataURL method and convert the base64 image to show the image preview.
+
   }
   getLocation() {
     if (navigator.geolocation) {
