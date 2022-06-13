@@ -31,7 +31,7 @@ import { GlobalstateService } from '../globalstate.service';
               Adoption Status: {{ litter.adoptStatus }}
             </h4>
 
-            <h3>Request: {{ litter.request }}</h3>
+            <h3>Request: {{ litter.request.length }}</h3>
             <h4>{{ litter.location[0] }}</h4>
           </div>
         </div>
@@ -41,7 +41,7 @@ import { GlobalstateService } from '../globalstate.service';
         Change Status
       </button>
 
-      <!-- <button (click)="handleDelete(litter._id)">Delete</button> -->
+ <button (click)="handleDelete(litter._id)">Delete</button> 
     </div>
     <pagination-controls nextLabel="Next" id="lit" (pageChange)="p = $event">
     </pagination-controls>
@@ -104,11 +104,11 @@ export class ListComponent implements OnInit {
 
 
 
-// handleDelete(id: any) {
-//   this.litterService.deleteById(id).subscribe((response) => {
-//     console.log(response)
-// this.lists.filter((litter: any) => {
-//       litter.id !== id;
-//     });
-//   });
-// }
+handleDelete(id: any) {
+  this.litterService.deleteById(id).subscribe((response) => {
+    console.log(response)
+this.lists.filter((litter: any) => {
+      litter.id !== id;
+    });
+  });
+}
