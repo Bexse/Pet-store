@@ -29,7 +29,7 @@ import config from '../config';
             <h4 style="color: red">
               Adoption Status: {{ litter.adoptStatus }}
             </h4>
-            <h3>Request: {{ litter.request }}</h3>
+            <h3>Request: {{ litter.request.length }}</h3>
             <p>{{ litter.location[0] }}</p>
           </div>
         </div>
