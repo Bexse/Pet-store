@@ -47,6 +47,14 @@ export class RequestComponent {
       _id: [''],
       request: ['', Validators.required],
     });
+       this.stateService.gloabalState.subscribe((state) => {
+      this.userState = state;
+      this.buyer = state.data?.role;
+      this.email = state.data?.email;
+      console.log(this.buyer);
+    });
+      
+      
     this.ac.paramMap
       .pipe(
         mergeMap((params) => this.service.listById(params.get('id') as string))
@@ -60,8 +68,10 @@ export class RequestComponent {
     const formValue = {
       request: this.requestForm.value.request,
     };
+     const requestform = {...formValue, email: this.email}
+
     this.service
-      .requestUpdate(this.requestForm.value._id, formValue)
+      .requestUpdate(this.requestForm.value._id, requestform)
       .subscribe((response) => {
         if (response.success) {
           this.router.navigate(['/', 'litters', 'view']);
