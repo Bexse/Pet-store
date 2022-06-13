@@ -12,7 +12,12 @@ const litterSchema = mongoose.Schema({
   breed: {
     type: String,
   },
-  request: { type: String },
+  //request: { type: String },
+   request: [{
+    message: {type: String}, 
+    email: {type: String}
+  }
+],
 
   adoptStatus: {
     type: String,
