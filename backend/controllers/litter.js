@@ -51,8 +51,8 @@ exports.updateLitterById = async (req, res) => {
 exports.requestManageById = async (req, res) => {
   const document = await Litter.findByIdAndUpdate(
     { _id: req.params.id },
-    req.body
-  );
+   {$push: {request: req.body}})
+  
   res.json({ success: true, data: document });
 };
 
