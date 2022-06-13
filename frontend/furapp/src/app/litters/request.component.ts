@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LitterserviceService } from '../litterservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GlobalstateService } from '../globalstate.service';
 import { mergeMap } from 'rxjs';
+import { User } from '../User';
 
 @Component({
   selector: 'app-request',
@@ -35,6 +37,9 @@ import { mergeMap } from 'rxjs';
   styles: [],
 })
 export class RequestComponent {
+  userState!: {token: any, data: any}; // quick trial
+  buyer!: User;
+  email!: string;
   requestForm: FormGroup;
 
   constructor(
